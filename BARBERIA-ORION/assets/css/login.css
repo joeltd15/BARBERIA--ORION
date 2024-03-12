@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+
 }
 
 body {
@@ -18,6 +19,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
+    
 }
 
 .container {
@@ -136,7 +138,7 @@ body {
 }
 
 .social-icons {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .social-icons a {
