@@ -6,7 +6,7 @@
 		"../scss/_variables.scss",
 		"../scss/_gauge.scss",
 		"../scss/_switches.scss",
-		"../scss/_widgets.scss",
+		"../scss/_ENERALES.scss",
 		"../scss/_socials.scss"
 	],
 	"names": [],
