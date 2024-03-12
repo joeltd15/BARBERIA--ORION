@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,14 +7,14 @@
     <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/login.css">
-    <title>BARBERIA ORION-LOGIN</title>
+    <title>BARBERIA ORION</title>
 </head>
 
 <body>
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form id="signup-form" onsubmit="return validateSignUp()">
                 <img src="assets/img/logo/logo2.png" alt="" width="100px" height="100px">
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands
@@ -25,12 +23,12 @@ fa-google-plus-g"></i></a>
 fa-facebook-f"></i></a>
                 </div>
                 <span>Correo electronico</span>
-                <input type="text" placeholder="Nombre Completo">
-                <input type="number" placeholder="Telefono">
-                <input type="email" placeholder="Correo">
-                <input type="password" placeholder="Contraseña">
-                <input type="password" placeholder="Confirmar contraseña">
-                <button>Registrarse</button>
+                <input type="text" id="fullName" placeholder="Nombre Completo" required>
+                <input type="tel" id="phoneNumber" placeholder="Telefono" required>
+                <input type="email" id="email" placeholder="Correo" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+                <button type="submit">Registrarse</button>
             </form>
         </div>
         <div class="form-container sign-in">
@@ -46,7 +44,7 @@ fa-facebook-f"></i></a>
                 <span>Contraseña</span>
                 <input type="email" placeholder="Correo">
                 <input type="password" placeholder="Contraseña">
-                <a href="#">Olvisdo la contraseña?</a>
+                <a href="olvidarc.html">Olvido la contraseña?</a>
                 <button>Iniciar sesion</button>
             </form>
         </div>
@@ -65,9 +63,6 @@ fa-facebook-f"></i></a>
             </div>
         </div>
     </div>
-
     <script src="assets/js/login.js"></script>
 </body>
-
 </html>
-
