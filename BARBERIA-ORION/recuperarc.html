@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/olvidarc.css">
+    <link rel="stylesheet" href="assets/css/recuperarc.css">
     <title>BARBERIA ORION</title>
 </head>
 <body>
@@ -12,28 +12,30 @@
         <div class="form-container sign-up">
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form id="resetForm" onsubmit="return validarFormulario()">
                 <img src="assets/img/logo/logo2.png" alt="" width="100px" height="100px">
                 <div class="social-icons">
                 </div>
-                <input type="email" placeholder="Correo" required>
-                <button>Enviar</button>
+                <input type="password" id="newPassword" placeholder="Nueva contraseña" required>
+                <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+                <button>Restablecer</button>
             </form>
         </div>
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
                     <div class="toggle-panel toggle-right">
-                        <h1>Recuperar contraseña</h1>
-                        <p>Olvidaste la contraseña</p>
+                        <h1>Nueva contraseña</h1>
+                        <p>Recuperación de la contraseña</p>
                     </div>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Recuperar contraseña</h1>
-                    <p>Olvidaste la contraseña</p>
+                    <h1>Nueva contraseña</h1>
+                    <p>Recuperación de la contraseña</p>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="assets/js/recuperarc.js"></script>
 </html>
