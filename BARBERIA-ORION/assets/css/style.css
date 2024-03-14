@@ -3902,12 +3902,13 @@ hr {
 }
 
 .team-area .dot-style .slick-dots li.slick-active button {
-    background: rgb(50, 72, 196);
+    background: rgb(50, 72, 196) ;
     width: 35px
 }
 
 .single-team:hover .team-img img {
-    transform: scale(1.05)
+    transform: scale(1.05);
+    filter: drop-shadow(15px 5px 5px rgb(202, 65, 65));
 }
 
 .footer-area .footer-top {
