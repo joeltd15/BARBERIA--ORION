@@ -210,3 +210,42 @@ item.getElementsByClassName('carrito-item-cantidad')[0];
 
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".boton-item");
+    const carritoItems = document.querySelector(".carrito-items");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const titulo = button.parentElement.querySelector(".titulo-item").textContent;
+            const precio = button.parentElement.querySelector(".precio-item").textContent;
+
+            const item = document.createElement("div");
+            item.classList.add("carrito-item");
+            item.innerHTML = `
+                <span>${titulo}</span>
+                <span>${precio}</span>
+            `;
+
+            const itemTitulos = carritoItems.querySelectorAll(".carrito-item span:first-child");
+            let yaExiste = false;
+
+            itemTitulos.forEach(itemTitulo => {
+                if (itemTitulo.textContent === titulo) {
+                    yaExiste = true;
+                    return;
+                }
+            });
+
+            if (yaExiste) {
+                // Mostrar alerta de que el producto ya está en el carrito
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Este producto ya está en el carrito!',
+                });
+            } else {
+                carritoItems.appendChild(item);
+            }
+        });
+    });
+});
