@@ -44,16 +44,27 @@ document.getElementsByClassName('restar-cantidad');
     document.getElementsByClassName('btn-pagar')[0].addEventListener('click',pagarClicked)
 }
 //Eliminamos todos los elementos del carrito y lo ocultamos
-function pagarClicked(){
-    alert("Gracias por la compra");
-    //Elimino todos los elmentos del carrito
-    var carritoItems = document.getElementsByClassName('carrito-items')[0];
-    while (carritoItems.hasChildNodes()){
-        carritoItems.removeChild(carritoItems.firstChild)
-    }
-    actualizarTotalCarrito();
-    ocultarCarrito();
-}
+function pagarClicked() {
+    Swal.fire({
+      icon: 'success',
+      title: '¡Compra exitosa!',
+      text: 'Gracias por tu compra.',
+      showConfirmButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Elimino todos los elementos del carrito
+        var carritoItems = document.getElementsByClassName('carrito-items')[0];
+        while (carritoItems.hasChildNodes()) {
+          carritoItems.removeChild(carritoItems.firstChild);
+        }
+        actualizarTotalCarrito();
+        ocultarCarrito();
+      }
+    });
+  }
+  
 //Funciòn que controla el boton clickeado de agregar al carrito
 function agregarAlCarritoClicked(event){
     var button = event.target;
@@ -86,14 +97,18 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
     var itemsCarrito = document.getElementsByClassName('carrito-items')[0];
 
     //controlamos que el item que intenta ingresar no se encuentre en el carrito
-    var nombresItemsCarrito =
-itemsCarrito.getElementsByClassName('carrito-item-titulo');
-    for(var i=0;i < nombresItemsCarrito.length;i++){
-        if(nombresItemsCarrito[i].innerText==titulo){
-            alert("El item ya se encuentra en el carrito");
-            return;
-        }
+    var nombresItemsCarrito = itemsCarrito.getElementsByClassName('carrito-item-titulo');
+    for (var i = 0; i < nombresItemsCarrito.length; i++) {
+      if (nombresItemsCarrito[i].innerText == titulo) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El item ya se encuentra en el carrito.',
+        });
+        return;
+      }
     }
+    
 
     var itemCarritoContenido = `
         <div class="carrito-item">
@@ -158,17 +173,31 @@ selector.getElementsByClassName('carrito-item-cantidad')[0].value;
     }
 }
 
-//Elimino el item seleccionado del carrito
-function eliminarItemCarrito(event){
+function eliminarItemCarrito(event) {
     var buttonClicked = event.target;
-    buttonClicked.parentElement.parentElement.remove();
-    //Actualizamos el total del carrito
-    actualizarTotalCarrito();
-
-    //la siguiente funciòn controla si hay elementos en el carrito
-    //Si no hay elimino el carrito
-    ocultarCarrito();
-}
+    var item = buttonClicked.parentElement.parentElement;
+  
+    Swal.fire({
+      title: "¿Estás seguro de eliminar este item del carrito?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        item.remove();
+        // Actualizamos el total del carrito
+        actualizarTotalCarrito();
+  
+        // Controlamos si hay elementos en el carrito
+        // Si no hay, eliminamos el carrito
+        ocultarCarrito();
+      }
+    });
+  }
+  
 //Funciòn que controla si hay elementos en el carrito. Si no hay
 //oculto el carrito.
 function ocultarCarrito(){
@@ -209,43 +238,4 @@ item.getElementsByClassName('carrito-item-cantidad')[0];
 = '$'+total.toLocaleString("es") + ",00";
 
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".boton-item");
-    const carritoItems = document.querySelector(".carrito-items");
-
-    buttons.forEach(button => {
-        button.addEventListener("click", () => {
-            const titulo = button.parentElement.querySelector(".titulo-item").textContent;
-            const precio = button.parentElement.querySelector(".precio-item").textContent;
-
-            const item = document.createElement("div");
-            item.classList.add("carrito-item");
-            item.innerHTML = `
-                <span>${titulo}</span>
-                <span>${precio}</span>
-            `;
-
-            const itemTitulos = carritoItems.querySelectorAll(".carrito-item span:first-child");
-            let yaExiste = false;
-
-            itemTitulos.forEach(itemTitulo => {
-                if (itemTitulo.textContent === titulo) {
-                    yaExiste = true;
-                    return;
-                }
-            });
-
-            if (yaExiste) {
-                // Mostrar alerta de que el producto ya está en el carrito
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Este producto ya está en el carrito!',
-                });
-            } else {
-                carritoItems.appendChild(item);
-            }
-        });
-    });
-});
+ ;
