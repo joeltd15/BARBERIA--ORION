@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
-            text: 'El formulario se envió correctamente',
+            text: 'El Codigo se envió a su correo correctamente',
         });
 
         // esto es para redirigir al usuario a otra página después de mostrar la alerta
