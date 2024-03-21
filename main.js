@@ -23,6 +23,10 @@ app.get('/productos', (req, res) => {
   res.render('Productos');
 });
 
+app.get('/agendar', (req, res) => {
+  res.render('agenda');
+});
+
 app.get('/login', (req, res) => {
   res.render('login');
 });
