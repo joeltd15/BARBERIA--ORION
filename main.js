@@ -9,6 +9,71 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // Servir contenido estático
 app.use(express.static('public'));
+app.use(express.static('public/ADMIN'));
+
+app.get('/admin', (req, res) => {
+  res.render('admin/home');
+});
+
+app.get('/admin2', (req, res) => {
+  res.render('admin/admin');
+});
+
+app.get('/Roles', (req, res) => {
+  res.render('admin/Roles');
+});
+
+app.get('/Categorias', (req, res) => {
+  res.render('admin/Categorias');
+});
+
+app.get('/Citas', (req, res) => {
+  res.render('admin/Citas');
+});
+
+app.get('/Clientes', (req, res) => {
+  res.render('admin/Clientes');
+});
+
+app.get('/Compras', (req, res) => {
+  res.render('admin/Compras');
+});
+
+app.get('/Empleados', (req, res) => {
+  res.render('admin/Empleados');
+});
+
+app.get('/Horario', (req, res) => {
+  res.render('admin/Horario');
+});
+
+app.get('/Pedidos', (req, res) => {
+  res.render('admin/Pedidos');
+});
+
+app.get('/Productos', (req, res) => {
+  res.render('admin/Productos');
+});
+
+app.get('/Proveedores', (req, res) => {
+  res.render('admin/Proveedores');
+});
+
+app.get('/Servicios.Admin', (req, res) => {
+  res.render('admin/Servicios.Admin');
+});
+
+app.get('/Usuarios', (req, res) => {
+  res.render('admin/Usuarios');
+});
+
+app.get('/Perfil', (req, res) => {
+  res.render('admin/Perfil');
+});
+
+app.get('/Ventas', (req, res) => {
+  res.render('admin/Ventas');
+});
 
 app.get('/', (req, res) => {
   res.render('index');
