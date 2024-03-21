@@ -6,9 +6,14 @@ const port = 2006;
 // Handlebars
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/partials');
 
 // Servir contenido estático
 app.use(express.static('public'));
+
+app.get('/admin', (req, res) => {
+  res.render('admin/index');
+});
 
 app.get('/', (req, res) => {
   res.render('index');
