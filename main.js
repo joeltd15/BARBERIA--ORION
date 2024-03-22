@@ -57,8 +57,8 @@ app.get('/Pedidos', (req, res) => {
   res.render('admin/Pedidos');
 });
 
-app.get('/Productos', (req, res) => {
-  res.render('Productos');
+app.get('/ProductoAdmin', (req, res) => {
+  res.render('admin/ProductoAdmin');
 });
 
 app.get('/Proveedores', (req, res) => {
@@ -91,7 +91,7 @@ app.get('/servicios', (req, res) => {
 
 
 app.get('/productos', (req, res) => {
-  res.render('admin/Productos');
+  res.render('Productos');
 });
 
 app.get('/agendar', (req, res) => {
