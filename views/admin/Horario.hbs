@@ -11,6 +11,93 @@
 </head>
 
 <body>
+       <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container form {
+            margin-bottom: 20px;
+        }
+
+        .container hr {
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        .container .form-group label {
+            font-weight: bold;
+        }
+
+        .container .form-control {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .container .form-control:focus {
+            outline: none;
+            border-color: #66afe9;
+            box-shadow: 0 0 8px 0 rgba(102, 175, 233, 0.6);
+        }
+
+        .container .btn-primary {
+           
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+       
+
+        .container .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .container .table th,
+        .container .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .container .table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .container .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .container .table tr:hover {
+            background-color: #ddd;
+        }
+    </style>
     <!-- SideBar -->
     {{> sidebar}}
 
@@ -32,8 +119,8 @@
                     <label for="startTime">Hora de Inicio:</label>
                     <select class="form-control" id="startTime" required>
                         <option value="">Seleccione Hora</option>
-                        <option value="08:00">08:00 AM</option>
-                        <option value="09:00">09:00 AM</option>
+                        <option value="08:00 AM ">08:00 AM</option>
+                        <option value="09:00 AM">09:00 AM</option>
                         <!-- Agregar más opciones si es necesario -->
                     </select>
                 </div>
@@ -41,9 +128,9 @@
                     <label for="endTime">Hora de Fin:</label>
                     <select class="form-control" id="endTime" required>
                         <option value="">Seleccione Hora</option>
-                        <option value="17:00">8:00 PM</option>
-                        <option value="18:00">9:00 PM</option>
-                        <option value="19:00">10:00 PM</option>
+                        <option value="8:00 PM">8:00 PM</option>
+                        <option value="9:00 PM">9:00 PM</option>
+                        <option value="10:00 PM">10:00 PM</option>
                         <!-- Agregar más opciones si es necesario -->
                     </select>
                 </div>
