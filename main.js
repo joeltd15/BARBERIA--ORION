@@ -52,7 +52,7 @@ app.get('/Pedidos', (req, res) => {
 });
 
 app.get('/Productos', (req, res) => {
-  res.render('admin/Productos');
+  res.render('admin/productos');
 });
 
 app.get('/Proveedores', (req, res) => {
@@ -60,7 +60,7 @@ app.get('/Proveedores', (req, res) => {
 });
 
 app.get('/Servicios.Admin', (req, res) => {
-  res.render('admin/Servicios.Admin');
+  res.render('admin/Servicios1.Admin');
 });
 
 app.get('/Usuarios', (req, res) => {
@@ -84,8 +84,8 @@ app.get('/servicios', (req, res) => {
 });
 
 
-app.get('/productos', (req, res) => {
-  res.render('Productos');
+app.get('/Productos', (req, res) => {
+  res.render('Productos1');
 });
 
 app.get('/agendar', (req, res) => {
