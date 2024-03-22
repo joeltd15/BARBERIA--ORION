@@ -31,6 +31,10 @@ app.get('/Citas', (req, res) => {
   res.render('admin/Citas');
 });
 
+app.get('/graficas', (req, res) => {
+  res.render('admin/graficas');
+});
+
 app.get('/Clientes', (req, res) => {
   res.render('admin/Clientes');
 });
@@ -52,7 +56,7 @@ app.get('/Pedidos', (req, res) => {
 });
 
 app.get('/Productos', (req, res) => {
-  res.render('admin/productos');
+  res.render('admin/Productos');
 });
 
 app.get('/Proveedores', (req, res) => {
@@ -60,7 +64,7 @@ app.get('/Proveedores', (req, res) => {
 });
 
 app.get('/Servicios.Admin', (req, res) => {
-  res.render('admin/Servicios1.Admin');
+  res.render('admin/Servicios.Admin');
 });
 
 app.get('/Usuarios', (req, res) => {
@@ -84,8 +88,8 @@ app.get('/servicios', (req, res) => {
 });
 
 
-app.get('/Productos', (req, res) => {
-  res.render('Productos1');
+app.get('/productos', (req, res) => {
+  res.render('Productos');
 });
 
 app.get('/agendar', (req, res) => {
