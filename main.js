@@ -53,8 +53,8 @@ app.get('/Horario', (req, res) => {
   res.render('admin/Horario');
 });
 
-app.get('/Pedidos', (req, res) => {
-  res.render('admin/Pedidos');
+app.get('/pedidos', (req, res) => {
+  res.render('admin/pedidos');
 });
 
 app.get('/ProductoAdmin', (req, res) => {
@@ -65,8 +65,8 @@ app.get('/Proveedores', (req, res) => {
   res.render('admin/Proveedores');
 });
 
-app.get('/Servicios1', (req, res) => {
-  res.render('admin/Servicios1.Admin');
+app.get('/ServiciosA', (req, res) => {
+  res.render('admin/ServiciosA');
 });
 
 app.get('/Usuarios', (req, res) => {

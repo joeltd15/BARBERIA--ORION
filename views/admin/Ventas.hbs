@@ -3,7 +3,6 @@
 {{> head}}
 <body>
 	<style>
-
 	  body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
@@ -54,13 +53,11 @@
     .container .table-responsive {
         overflow-x: auto;
     }
-</style>
-	<!-- SideBar -->
+	</style>
+
 	{{> sidebar}}
 
-	<!-- Content page-->
 	<section class="full-box dashboard-contentPage">
-		<!-- NavBar -->
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
@@ -84,216 +81,102 @@
 				</li>
 			</ul>
 		</nav>
-		<!-- Content page -->
-		
 
-<!-- Content page-->
-<section class="full-box dashboard-contentPage">
-    <!-- NavBar -->
-    <nav class="full-box dashboard-Navbar">
-        <ul class="full-box list-unstyled text-right">
-            <li class="pull-left">
-                <a href="#!" class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></a>
-            </li>
-            <li>
-                <a href="#!" class="btn-Notifications-area">
-                    <i class="zmdi zmdi-notifications-none"></i>
-                    <span class="badge">7</span>
-                </a>
-            </li>
-            <li>
-                <a href="#!" class="btn-search">
-                    <i class="zmdi zmdi-search"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#!" class="btn-modal-help">
-                    <i class="zmdi zmdi-help-outline"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- Content page -->
-    <div class="container-fluid">
-            <div class="page-header">
-                <h1 class="text-titles"><i class="zmdi zmdi-shopping-cart zmdi-hc-fw"></i> Ventas <small>Admin</small></h1>
-            </div>
-            <p class="lead"></p>
-        </div>
-        <div class="container mt-5">
-            <h2 class="mb-4">Administrar Ventas</h2>
+		<div class="container mt-5">
+			<h2>Registro de Ventas</h2>
 
-            <!-- Formulario para agregar venta -->
-            <form id="addSaleForm">
-                <div class="form-group">
-                    <label for="saleId">ID Venta:</label>
-                    <input type="text" class="form-control" id="saleId" required>
-                </div>
-                <div class="form-group">
-                    <label for="saleDate">Fecha de Venta:</label>
-                    <input type="date" class="form-control" id="saleDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="saleClientId">ID Cliente:</label>
-                    <input type="text" class="form-control" id="saleClientId" required>
-                </div>
-                <div class="form-group">
-                    <label for="saleState">Estado:</label>
-                    <select class="form-control" id="saleState" required>
-                        <option value="1">Activa</option>
-                        <option value="0">Inactiva</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="saleTotalAmount">Monto Total:</label>
-                    <input type="number" step="0.01" class="form-control" id="saleTotalAmount" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Agregar Venta</button>
-            </form>
+			<form id="addSaleForm">
+				<div class="form-group">
+					<label for="saleId">ID:</label>
+					<input type="text" class="form-control" id="saleId" required>
+				</div>
+				<div class="form-group">
+					<label for="saleDate">Fecha de Venta:</label>
+					<input type="date" class="form-control" id="saleDate" required>
+				</div>
+				<div class="form-group">
+					<label for="customerId">ID Cliente:</label>
+					<input type="text" class="form-control" id="customerId" required>
+				</div>
+				<div class="form-group">
+					<label for="saleStatus">Estado:</label>
+					<select class="form-control" id="saleStatus" required>
+						<option value="1">Activo</option>
+						<option value="0">Inactivo</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="totalAmount">Monto Total:</label>
+					<input type="number" class="form-control" id="totalAmount" required min="0">
+				</div>
+				<button type="submit" class="btn btn-primary">Agregar Venta</button>
+			</form>
 
-            <hr>
+			<hr>
 
-            <!-- Campo para buscar venta por ID -->
-            <div class="form-inline mb-3">
-                <label for="searchSaleId">Buscar por ID Venta:</label>
-                <input type="text" class="form-control mx-2" id="searchSaleId">
-                <button type="button" class="btn btn-primary" id="searchSaleById">Buscar</button>
-            </div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Fecha</th>
+						<th>ID Cliente</th>
+						<th>Estado</th>
+						<th>Monto Total</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody id="saleTable">
+					<!-- Las filas de la tabla se agregarán dinámicamente con JavaScript -->
+				</tbody>
+			</table>
+		</div>
 
-            <!-- Tabla para mostrar ventas -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID Venta</th>
-                        <th>Fecha de Venta</th>
-                        <th>ID Cliente</th>
-                        <th>Estado</th>
-                        <th>Monto Total</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="salesTable">
-                    <!-- Las filas de la tabla se agregarán dinámicamente con JavaScript -->
-                </tbody>
-            </table>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				$('#addSaleForm').on('submit', function (e) {
+					e.preventDefault();
 
-            <!-- Formulario para ver detalle de venta (oculto al principio) -->
-            <form id="viewSaleForm" style="display: none;">
-                <h3>Detalle de Venta</h3>
-                <div class="form-group">
-                    <label for="viewSaleId">ID Venta:</label>
-                    <input type="text" class="form-control" id="viewSaleId" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="viewSaleDate">Fecha de Venta:</label>
-                    <input type="date" class="form-control" id="viewSaleDate" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="viewSaleClientId">ID Cliente:</label>
-                    <input type="text" class="form-control" id="viewSaleClientId" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="viewSaleState">Estado:</label>
-                    <input type="text" class="form-control" id="viewSaleState" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="viewSaleTotalAmount">Monto Total:</label>
-                    <input type="text" class="form-control" id="viewSaleTotalAmount" readonly>
-                </div>
-                <button type="button" class="btn btn-secondary" id="closeViewBtn">Cerrar</button>
-            </form>
-        </div>
-    </section>
+					var saleId = $('#saleId').val();
+					var saleDate = $('#saleDate').val();
+					var customerId = $('#customerId').val();
+					var saleStatus = $('#saleStatus').val();
+					var totalAmount = $('#totalAmount').val();
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Función para agregar venta
-            $('#addSaleForm').on('submit', function (e) {
-                e.preventDefault();
-                var saleId = $('#saleId').val();
-                var saleDate = $('#saleDate').val();
-                var saleClientId = $('#saleClientId').val();
-                var saleState = $('#saleState').val();
-                var saleTotalAmount = $('#saleTotalAmount').val();
-                if (saleId && saleDate && saleClientId && saleState && saleTotalAmount) {
-                    var newRow = `<tr>
-                                    <td>${saleId}</td>
-                                    <td>${saleDate}</td>
-                                    <td>${saleClientId}</td>
-                                    <td>${saleState === '1' ? 'Activa' : 'Inactiva'}</td>
-                                    <td>${saleTotalAmount}</td>
-                                    <td>
-                                        <button class="btn btn-info view-btn">Ver Detalle</button>
-                                        <button class="btn btn-danger delete-btn">Eliminar</button>
-                                    </td>
-                                </tr>`;
-                    $('#salesTable').append(newRow);
-                    $('#saleId').val('');
-                    $('#saleDate').val('');
-                    $('#saleClientId').val('');
-                    $('#saleState').val('');
-                    $('#saleTotalAmount').val('');
-                } else {
-                    alert('Por favor completa todos los campos.');
-                }
-            });
+					var newRow = '<tr>' +
+						'<td>' + saleId + '</td>' +
+						'<td>' + saleDate + '</td>' +
+						'<td>' + customerId + '</td>' +
+						'<td>' + (saleStatus === '1' ? 'Activo' : 'Inactivo') + '</td>' +
+						'<td>' + totalAmount + '</td>' +
+						'<td><button class="btn btn-danger delete-btn">Eliminar</button></td>' +
+						'</tr>';
 
-            // Función para eliminar venta por ID
-            $(document).on('click', '.delete-btn', function ()
+					$('#saleTable').append(newRow);
+					clearForm();
+				});
 
+				$(document).on('click', '.delete-btn', function () {
+					$(this).closest('tr').remove();
+				});
 
+				// Función para limpiar el formulario después de agregar una venta
+				function clearForm() {
+					$('#saleId').val('');
+					$('#saleDate').val('');
+					$('#customerId').val('');
+					$('#saleStatus').val('');
+					$('#totalAmount').val('');
+				}
+			});
+		</script>
 
-() {
-                $(this).closest('tr').remove();
-            });
-
-            // Función para ver detalle de venta
-            $(document).on('click', '.view-btn', function () {
-                var row = $(this).closest('tr');
-                var id = row.find('td:eq(0)').text();
-                var date = row.find('td:eq(1)').text();
-                var clientId = row.find('td:eq(2)').text();
-                var state = row.find('td:eq(3)').text();
-                var totalAmount = row.find('td:eq(4)').text();
-                $('#viewSaleId').val(id);
-                $('#viewSaleDate').val(date);
-                $('#viewSaleClientId').val(clientId);
-                $('#viewSaleState').val(state);
-                $('#viewSaleTotalAmount').val(totalAmount);
-                $('#salesTable').hide();
-                $('#viewSaleForm').show();
-            });
-
-            // Función para cerrar el detalle de venta
-            $('#closeViewBtn').on('click', function () {
-                $('#viewSaleForm').hide();
-                $('#salesTable').show();
-            });
-
-            // Función para buscar venta por ID
-            $('#searchSaleById').on('click', function () {
-                var searchId = $('#searchSaleId').val().trim();
-                $('#salesTable tbody tr').each(function () {
-                    var saleId = $(this).find('td:first').text().trim();
-                    if (saleId === searchId || searchId === '') {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            });
-        });
-    </script>
-
-    <!--====== Scripts -->
-    <script src="./js/jquery-3.1.1.min.js"></script>
-    <script src="./js/sweetalert2.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/material.min.js"></script>
-    <script src="./js/ripples.min.js"></script>
-    <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="./js/main2.js"></script>
-
-</body>
+		<!--====== Scripts -->
+		<script src="./js/sweetalert2.min.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
+		<script src="./js/material.min.js"></script>
+		<script src="./js/ripples.min.js"></script>
+		<script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="./js/main2.js"></script>
+	</body>
 </html>
