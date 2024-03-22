@@ -91,11 +91,11 @@ app.get('/servicios', (req, res) => {
 
 
 app.get('/productos', (req, res) => {
-  res.render('Productos');
+  res.render('productos');
 });
 
 app.get('/agendar', (req, res) => {
-  res.render('agenda');
+  res.render('agendar');
 });
 
 app.get('/login', (req, res) => {
