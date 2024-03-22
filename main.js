@@ -6,6 +6,8 @@ const port = 2006;
 // Handlebars
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/admin');
+
 
 // Servir contenido estático
 app.use(express.static('public'));
@@ -56,15 +58,15 @@ app.get('/Pedidos', (req, res) => {
 });
 
 app.get('/Productos', (req, res) => {
-  res.render('admin/Productos');
+  res.render('Productos');
 });
 
 app.get('/Proveedores', (req, res) => {
   res.render('admin/Proveedores');
 });
 
-app.get('/Servicios.Admin', (req, res) => {
-  res.render('admin/Servicios.Admin');
+app.get('/Servicios1', (req, res) => {
+  res.render('admin/Servicios1.Admin');
 });
 
 app.get('/Usuarios', (req, res) => {
@@ -89,7 +91,7 @@ app.get('/servicios', (req, res) => {
 
 
 app.get('/productos', (req, res) => {
-  res.render('Productos');
+  res.render('admin/Productos');
 });
 
 app.get('/agendar', (req, res) => {
